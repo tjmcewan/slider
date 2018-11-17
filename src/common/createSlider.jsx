@@ -153,6 +153,7 @@ export default function createSlider(Component) {
       if (this.handlesRefs[this.prevMovedHandleIndex]) {
         this.handlesRefs[this.prevMovedHandleIndex].clickFocus();
       }
+      this.removeDocumentEvents()
     }
 
     onMouseMove = (e) => {
