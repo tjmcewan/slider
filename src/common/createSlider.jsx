@@ -95,6 +95,7 @@ export default function createSlider(Component) {
     }
 
     onMouseDown = (e) => {
+      console.log("createSlider onMouseDown")
       if (e.button !== 0) { return; }
 
       const isVertical = this.props.vertical;
@@ -112,6 +113,7 @@ export default function createSlider(Component) {
     }
 
     onTouchStart = (e) => {
+      console.log("createSlider onTouchStart")
       if (utils.isNotTouchEvent(e)) return;
 
       const isVertical = this.props.vertical;
@@ -129,6 +131,7 @@ export default function createSlider(Component) {
     }
 
     onFocus = (e) => {
+      console.log("createSlider onFocus")
       const { onFocus, vertical } = this.props;
       if (utils.isEventFromHandle(e, this.handlesRefs)) {
         const handlePosition = utils.getHandleCenterPosition(vertical, e.target);
@@ -142,6 +145,7 @@ export default function createSlider(Component) {
     }
 
     onBlur = (e) => {
+      console.log("createSlider onBlur")
       const { onBlur } = this.props;
       this.onEnd(e);
       if (onBlur) {
@@ -150,6 +154,7 @@ export default function createSlider(Component) {
     };
 
     onMouseUp = () => {
+      console.log("createSlider onMouseUp")
       if (this.handlesRefs[this.prevMovedHandleIndex]) {
         this.handlesRefs[this.prevMovedHandleIndex].clickFocus();
       }
@@ -157,6 +162,7 @@ export default function createSlider(Component) {
     }
 
     onMouseMove = (e) => {
+      console.log("createSlider onMouseMove")
       if (!this.sliderRef) {
         this.onEnd();
         return;
@@ -166,6 +172,7 @@ export default function createSlider(Component) {
     }
 
     onTouchMove = (e) => {
+      console.log("createSlider onTouchMove")
       if (utils.isNotTouchEvent(e) || !this.sliderRef) {
         this.onEnd();
         return;
@@ -176,12 +183,14 @@ export default function createSlider(Component) {
     }
 
     onKeyDown = (e) => {
+      console.log("createSlider onKeyDown")
       if (this.sliderRef && utils.isEventFromHandle(e, this.handlesRefs)) {
         this.onKeyboard(e);
       }
     }
 
     onClickMarkLabel = (e, value) => {
+      console.log("createSlider onClickMarkLabel")
       e.stopPropagation();
       this.onChange({ value });
     }
@@ -204,17 +213,20 @@ export default function createSlider(Component) {
     }
 
     addDocumentTouchEvents() {
+      console.log("createSlider addDocumentTouchEvents")
       // just work for Chrome iOS Safari and Android Browser
       this.onTouchMoveListener = addEventListener(this.document, 'touchmove', this.onTouchMove);
       this.onTouchUpListener = addEventListener(this.document, 'touchend', this.onEnd);
     }
 
     addDocumentMouseEvents() {
+      console.log("createSlider addDocumentMouseEvents")
       this.onMouseMoveListener = addEventListener(this.document, 'mousemove', this.onMouseMove);
       this.onMouseUpListener = addEventListener(this.document, 'mouseup', this.onEnd);
     }
 
     removeDocumentEvents() {
+      console.log("createSlider removeDocumentEvents")
       /* eslint-disable no-unused-expressions */
       this.onTouchMoveListener && this.onTouchMoveListener.remove();
       this.onTouchUpListener && this.onTouchUpListener.remove();

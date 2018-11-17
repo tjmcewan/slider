@@ -20,6 +20,7 @@ var Slider = function (_React$Component) {
     var _this = _possibleConstructorReturn(this, (Slider.__proto__ || Object.getPrototypeOf(Slider)).call(this, props));
 
     _this.onEnd = function () {
+      console.log("Slider onEnd");
       _this.setState({ dragging: false });
       _this.removeDocumentEvents();
       _this.props.onAfterChange(_this.getValue());
@@ -68,6 +69,7 @@ var Slider = function (_React$Component) {
   }, {
     key: 'onChange',
     value: function onChange(state) {
+      console.log("Slider onChange");
       var props = this.props;
       var isNotControlled = !('value' in props);
       if (isNotControlled) {
@@ -80,6 +82,7 @@ var Slider = function (_React$Component) {
   }, {
     key: 'onStart',
     value: function onStart(position) {
+      console.log("Slider onStart");
       this.setState({ dragging: true });
       var props = this.props;
       var prevValue = this.getValue();
@@ -98,6 +101,7 @@ var Slider = function (_React$Component) {
   }, {
     key: 'onMove',
     value: function onMove(e, position) {
+      console.log("Slider onMove");
       utils.pauseEvent(e);
       var oldValue = this.state.value;
 
@@ -109,6 +113,7 @@ var Slider = function (_React$Component) {
   }, {
     key: 'onKeyboard',
     value: function onKeyboard(e) {
+      console.log("Slider onKeyboard");
       var valueMutator = utils.getKeyboardValueMutator(e);
 
       if (valueMutator) {

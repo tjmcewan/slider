@@ -62,6 +62,7 @@ class Slider extends React.Component {
   }
 
   onChange(state) {
+    console.log("Slider onChange")
     const props = this.props;
     const isNotControlled = !('value' in props);
     if (isNotControlled) {
@@ -73,6 +74,7 @@ class Slider extends React.Component {
   }
 
   onStart(position) {
+    console.log("Slider onStart")
     this.setState({ dragging: true });
     const props = this.props;
     const prevValue = this.getValue();
@@ -90,12 +92,14 @@ class Slider extends React.Component {
   }
 
   onEnd = () => {
+    console.log("Slider onEnd")
     this.setState({ dragging: false });
     this.removeDocumentEvents();
     this.props.onAfterChange(this.getValue());
   }
 
   onMove(e, position) {
+    console.log("Slider onMove")
     utils.pauseEvent(e);
     const { value: oldValue } = this.state;
     const value = this.calcValueByPos(position);
@@ -105,6 +109,7 @@ class Slider extends React.Component {
   }
 
   onKeyboard(e) {
+    console.log("Slider onKeyboard")
     const valueMutator = utils.getKeyboardValueMutator(e);
 
     if (valueMutator) {
