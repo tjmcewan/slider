@@ -228,10 +228,14 @@ export default function createSlider(Component) {
     removeDocumentEvents() {
       console.log("createSlider removeDocumentEvents")
       /* eslint-disable no-unused-expressions */
+      console.log(`this.onTouchMoveListener ${!!this.onTouchMoveListener}`)
       this.onTouchMoveListener && this.onTouchMoveListener.remove();
+      console.log(`this.onTouchUpListener ${!!this.onTouchUpListener}`)
       this.onTouchUpListener && this.onTouchUpListener.remove();
 
+      console.log(`this.onMouseMoveListener ${!!this.onMouseMoveListener}`)
       this.onMouseMoveListener && this.onMouseMoveListener.remove();
+      console.log(`this.onMouseUpListener ${!!this.onMouseUpListener}`)
       this.onMouseUpListener && this.onMouseUpListener.remove();
       /* eslint-enable no-unused-expressions */
     }
